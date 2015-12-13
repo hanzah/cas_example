@@ -1,0 +1,28 @@
+namespace :db do
+  desc "migrate your database"
+  task :migrate do
+    require 'bundler'
+    Bundler.require
+    require './config/environment'
+    ActiveRecord::Migrator.migrate('db/migrate')
+  end
+  
+  desc 'create'
+  task :create do
+    require 'bundler'
+    require 'active_record'
+    Bundler.require
+    config = YAML.load_file('./config/database.yml')
+    ActiveRecord::Base.establish_connection config.merge('database' => 'postgres', 'schema_search_path' => 'public')
+    ActiveRecord::Base.connection.create_database config['database'], config.merge('encoding' => config['encoding'])
+  end
+
+  desc 'Load the seed data from db/seeds.rb'
+  task :seed do
+    require 'bundler'
+    Bundler.require
+    require './config/environment'
+    seed_file = File.join('./db/seeds.rb')
+    load(seed_file) if File.exist?(seed_file)
+  end
+end

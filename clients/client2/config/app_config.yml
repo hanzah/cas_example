@@ -1,0 +1,4 @@
+cas_server_auth_path: http://localhost:3002/auth
+cas_server_verify_path: http://localhost:3002/verify
+cas_client_secret: secret2
+cas_client_id: '00002'

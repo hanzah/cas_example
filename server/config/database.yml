@@ -1,0 +1,8 @@
+adapter: postgresql
+encoding: unicode
+database: cas_server
+pool: 5
+host: localhost
+username: web
+port: 5432
+password: password

@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: cas_client_one
+  pool: 5
+  host: localhost
+  username: XXXXX
+  port: 5432
+  password: XXXXX
